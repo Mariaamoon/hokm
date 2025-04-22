@@ -6,4 +6,7 @@ public class Card {
         this.face = cardface;
         this.suit = cardsuit;
     }
+    public String tostring(){
+        return face + " " + suit;
+    }
 }
