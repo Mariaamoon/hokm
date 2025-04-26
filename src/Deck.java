@@ -1,7 +1,9 @@
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 
 public class Deck {
+    public static String s;
     private Card[] deck;
     private int currentCard;
     private static final int numberOfCards = 52 ;
@@ -26,9 +28,17 @@ public class Deck {
                 deck[second] = temp;
             }
         }
+        public String toString(Card[] deck, int currentCard) {
+            return deck[currentCard].toString();
+        }
         public Card deal(){
-            if(currentCard < deck.length)
-                return deck[currentCard++];
+            if(currentCard < deck.length || deck[currentCard] != null){
+                Card cardToDeal = deck[currentCard];
+                s=toString(deck, currentCard);
+                deck[currentCard] = null;
+                currentCard++;
+                return cardToDeal;
+            }
                 else
                     return null;
 
