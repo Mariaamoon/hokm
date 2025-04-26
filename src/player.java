@@ -31,7 +31,6 @@ public class player {
         return hand;
     }
 
-    // Number of cards in hand
     public int handSize() {
         return hand.size();
     }
@@ -39,5 +38,10 @@ public class player {
     // Display player's hand
     public void showHand() {
         System.out.println(name + "'s hand: " + hand);
+    }
+    public boolean own(String a) {
+        if (hand.contains(a))
+            return true;
+        return false;
     }
 }
