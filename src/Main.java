@@ -17,7 +17,7 @@ public class Main {
         }
         players[0].showHand();
         System.out.println("choose your Hokm");
-        String choice = sc.nextLine();
+        String choice = sc.next();
         rules.Hokm = choice;
         for (int i = 0; i < 8; i++) {
             deck.deal();
@@ -30,31 +30,37 @@ public class Main {
             }
         }
         for (int k = 0; k < 13; k++) {
-
             int ar[] = new int[4];
             int max = 0;
             int maxp = 0;
             for (int i = 0; i < 4; i++) {
-                players[i].showHand();
-                System.out.println("choose your card");
-                int j = sc.nextInt();
                 if (i == 0) {
-                    rules.hokm = players[0].getHand(j).toString();
+                    players[0].showHand();
+                    System.out.println("choose your card");
+                    int p = sc.nextInt();
+                    String hm = players[0].getHand(p).toString();
+                    rules.sethokm(hm);
+                    ar[0] = Card.setvalue(hm);
+                    players[0].playCard(p);
+                    max = ar[0];
+                    maxp = i;
                 }
-
-                while (players[i].chooseCard(j) == false) {
-                    System.out.println("Choose a valid card");
-                }
-                if (players[i].chooseCard(j) == true) {
-                    String card = players[i].getHand(j).toString();
-                    ar[i] = Card.setvalue(card);
-                    players[i].playCard(j);
-                    if (i == 0) {
-                        max = ar[0];
-                        maxp = i;
-                    } else if (ar[i] > max) {
-                        max = ar[i];
-                        maxp = i;
+                if (i > 0) {
+                    players[i].showHand();
+                    System.out.println("choose your card");
+                    int j = sc.nextInt();
+                    while (players[i].chooseCard(j) == false) {
+                        System.out.println("Choose a valid card");
+                        j = sc.nextInt();
+                    }
+                    if (players[i].chooseCard(j) == true) {
+                        String card = players[i].getHand(j).toString();
+                        ar[i] = Card.setvalue(card);
+                        players[i].playCard(j);
+                        if (ar[i] > max) {
+                            max = ar[i];
+                            maxp = i;
+                        }
                     }
                 }
             }

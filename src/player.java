@@ -46,13 +46,15 @@ public class player {
     }
 
     public boolean chooseCard(int a) {
+        if(hand.get(a).contains(rules.hokm))
+            return true;
+        int count =0;
         for (String s : hand) {
-            if (s.contains(rules.hokm) && hand.get(a).contains(s)) {
-                return true;
-            } else if (s.contains(rules.hokm) == false)
-                return true;
+               if(s.contains(rules.hokm)==false)
+            count++;
         }
-
+        if(count == handSize())
+            return true;
         return false;
     }
 }

@@ -17,12 +17,21 @@ public class rules {
             return true;
         return false;
     }
-    public void setHokm(String h) {
-        this.Hokm = h;
+    public  void setHokm(String h) {
+            this.Hokm = h;
+
     }
 
-    public void sethokm(String h) {
-        this.hokm = h;
+    public static void sethokm(String h) {
+      if(h.contains("Hearts"))
+        hokm = "Hearts";
+        if(h.contains("Clubs"))
+            hokm = "Clubs";
+       else if(h.contains("Diamonds"))
+            hokm = "Diamonds";
+        else if (h.contains("Spades"))
+            hokm = "Spades";
+
     }
 
     public int winner() {
