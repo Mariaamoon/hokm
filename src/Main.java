@@ -9,7 +9,6 @@ public class Main {
             //String playerName = sc.nextLine();
             players[i] = new player("playerName" + i);
         }
-
         deck.shuffle();
         for (int i = 0; i < 5; i++) {
             deck.deal();

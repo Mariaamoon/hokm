@@ -19,7 +19,6 @@ public class rules {
     }
     public  void setHokm(String h) {
             this.Hokm = h;
-
     }
 
     public static void sethokm(String h) {

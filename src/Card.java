@@ -1,25 +1,10 @@
 public class Card {
     private String face;
     private String suit;
-
     public Card(String cardface, String cardsuit) {
         this.face = cardface;
         this.suit = cardsuit;
     }
-
-    public int setKhal(String kh) {
-        int khal = 0;
-        if (kh.contains("Hearts"))
-            khal = 1;
-        else if (kh.contains("Diamonds"))
-            khal = 2;
-        else if (kh.contains("Clubs"))
-            khal = 3;
-        else if (kh.contains("Spades"))
-            khal = 4;
-        return khal;
-    }
-
     public static int setvalue(String s) {
         int value = 0;
         if (s.contains("Deuce"))
@@ -56,4 +41,27 @@ public class Card {
     public String toString() {
         return face + " " + suit;
     }
+    public String getImageFileName() {
+        return faceToNumber(face) + "_of_" + suit.toLowerCase() + ".png";
+    }
+
+    private String faceToNumber(String face) {
+        return switch (face) {
+            case "Deuce" -> "2";
+            case "Three" -> "3";
+            case "Four" -> "4";
+            case "Five" -> "5";
+            case "Six" -> "6";
+            case "Seven" -> "7";
+            case "Eight" -> "8";
+            case "Nine" -> "9";
+            case "Ten" -> "10";
+            case "Jack" -> "jack";
+            case "Queen" -> "queen";
+            case "King" -> "king";
+            case "Ace" -> "ace";
+            default -> "unknown";
+        };
+    }
+
 }

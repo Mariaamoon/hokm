@@ -34,7 +34,6 @@ public class player {
     public int handSize() {
         return hand.size();
     }
-
     public void showHand() {
         System.out.println(name + "'s hand: " + hand);
     }
